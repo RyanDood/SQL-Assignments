@@ -3,23 +3,60 @@ select * from Customers
 alter table Customers
 alter column phone varchar(15) not null
 
-insert into Customers(customer_id,first_name,last_name,email,phone,address) values(3,'Daniel','Vijay','vijay@gmail.com','9721035100','Coimbatore-TamilNadu'),(4,'Arul','Sethupathi','sethupathi@gmail.com','8794563210','Madurai-TamilNadu'),(5,'Mahesh','Vincent','mahesh@gmail.com','1456987542','Vizag-Andhra'),(6,'Arun','Mozhi','arun@gmail.com','4987564210','Tirunelveli-TamilNadu'),(7,'Madurai','Muthu','muthu@gmail.com','7896542310','Salem-TamilNadu'),(8,'Billy','Yash','yash@gmail.com','9721035100','Washington-USA'),(9,'Dilli','Joy','dilli@gmail.com','6587942130','Patna -Bihar'),(10,'Sunaina','Mary','mary@gmail.com','4752315648','Mumbai-Maharashtra')
+insert into Customers(customer_id,first_name,last_name,email,phone,address)
+values
+(3,'Daniel','Vijay','vijay@gmail.com','9721035100','Coimbatore-TamilNadu'),
+(4,'Arul','Sethupathi','sethupathi@gmail.com','8794563210','Madurai-TamilNadu'),
+(5,'Mahesh','Vincent','mahesh@gmail.com','1456987542','Vizag-Andhra'),
+(6,'Arun','Mozhi','arun@gmail.com','4987564210','Tirunelveli-TamilNadu'),
+(7,'Madurai','Muthu','muthu@gmail.com','7896542310','Salem-TamilNadu'),
+(8,'Billy','Yash','yash@gmail.com','9721035100','Washington-USA'),
+(9,'Dilli','Joy','dilli@gmail.com','6587942130','Patna -Bihar'),
+(10,'Sunaina','Mary','mary@gmail.com','4752315648','Mumbai-Maharashtra')
 
 select *  from Products
 
-insert into Products(product_id,product_name,description,price) values(1,'Dove Shampoo','New Neem Flavour',80),(2,'Baby Powder','Increased Protection',140),(3,'Ink Pen','Fluid Ball',40),(4,'Samsung S23 Ultra','High Definition Camera',24000),(5,'Mac M5','High end laptop',1500000),(6,'Fog Scent','New Flavour',160),(7,'Tupperware','New Larger Sized Bottle',230)
+insert into Products(product_id,product_name,description,price)
+values
+(1,'Dove Shampoo','New Neem Flavour',80),
+(2,'Baby Powder','Increased Protection',140),
+(3,'Ink Pen','Fluid Ball',40),
+(4,'Samsung S23 Ultra','High Definition Camera',24000),
+(5,'Mac M5','High end laptop',1500000),
+(6,'Fog Scent','New Flavour',160),
+(7,'Tupperware','New Larger Sized Bottle',230)
 
 select *  from Orders
 
-insert into Orders(order_id,customer_id,order_date,total_amount) values(2,3,'2023-04-18',24000),(3,7,'2023-04-24',160),(4,1,'2023-05-11',230),(5,5,'2023-05-29',1500000),(6,9,'2023-06-13',80)
+insert into Orders(order_id,customer_id,order_date,total_amount)
+values
+(2,3,'2023-04-18',24000),
+(3,7,'2023-04-24',160),
+(4,1,'2023-05-11',230),
+(5,5,'2023-05-29',1500000),
+(6,9,'2023-06-13',80)
 
 select *  from OrderDetails
 
-insert into OrderDetails(order_detais_id,order_id,product_id,quantity) values(1,1,3,1),(2,2,4,1),(3,3,6,1),(4,4,7,1),(5,5,5,1),(6,6,1,1)
+insert into OrderDetails(order_detais_id,order_id,product_id,quantity) 
+values
+(1,1,3,1),
+(2,2,4,1),
+(3,3,6,1),
+(4,4,7,1),
+(5,5,5,1),
+(6,6,1,1)
 
 select *  from Inventory
 
-insert into Inventory(inventory_id,product_id,quantity,last_stock_update) values(2,2,7,'2023-03-12'),(3,3,40,'2023-03-20'),(4,4,3,'2023-04-07'),(5,5,1,'2023-04-12'),(6,6,12,'2023-04-25'),(7,7,11,'2023-05-11')
+insert into Inventory(inventory_id,product_id,quantity,last_stock_update)
+values
+(2,2,7,'2023-03-12'),
+(3,3,40,'2023-03-20'),
+(4,4,3,'2023-04-07'),
+(5,5,1,'2023-04-12'),
+(6,6,12,'2023-04-25'),
+(7,7,11,'2023-05-11')
 
 alter table Products
 add constraint CK_price
