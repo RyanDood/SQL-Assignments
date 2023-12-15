@@ -1,10 +1,61 @@
-select * from Customers
+--CREATING DATABASE
+create database TechShop
 
-alter table Customers
-alter column phone varchar(15) not null
+--CREATING TABLES:
+create table Customers(
+customer_id int primary key,
+first_name varchar(50),
+last_name varchar(50),
+email varchar(50),
+phone varchar(15),
+address varchar(MAX)
+)
 
+create table Category(
+id int primary key,
+category_name varchar(50)
+)
+
+create table Products(
+product_id int primary key,
+product_name varchar(MAX),
+description varchar(MAX),
+price int,
+category int
+constraint FK_Products_Category foreign key(category) references Category(id) on delete cascade
+)
+
+create table Orders(
+order_id int primary key,
+customer_id int,
+order_date date,
+total_amount int
+constraint FK_Orders_Customers foreign key(customer_id) references Customers(customer_id) on delete cascade
+)
+
+create table OrderDetails(
+order_detais_id int primary key,
+order_id int,
+product_id int,
+quantity int
+constraint FK_OrderDetails_Orders foreign key(order_id) references Orders(order_id) on delete cascade,
+constraint FK_OrderDetails_Products foreign key(product_id) references Products(product_id) on delete cascade
+)
+
+create table Inventory(
+inventory_id int primary key,
+product_id int,
+quantity int,
+last_stock_update date
+constraint FK_Inventory_Products foreign key(product_id) references Products(product_id) on delete cascade
+)
+
+
+--INSERTING VALUES:
 insert into Customers(customer_id,first_name,last_name,email,phone,address)
 values
+(1,'Ryan','Paul','dood@gmail.com','9876543210','Trichy,TamilNadu'),
+(2,'Ajith','Kumar','ajith@gmail.com','9145687200','Chennai-TamilNadu'),
 (3,'Daniel','Vijay','vijay@gmail.com','9721035100','Coimbatore-TamilNadu'),
 (4,'Arul','Sethupathi','sethupathi@gmail.com','8794563210','Madurai-TamilNadu'),
 (5,'Mahesh','Vincent','mahesh@gmail.com','1456987542','Vizag-Andhra'),
@@ -14,7 +65,6 @@ values
 (9,'Dilli','Joy','dilli@gmail.com','6587942130','Patna -Bihar'),
 (10,'Sunaina','Mary','mary@gmail.com','4752315648','Mumbai-Maharashtra')
 
-select *  from Products
 
 insert into Products(product_id,product_name,description,price)
 values
@@ -26,17 +76,16 @@ values
 (6,'Fog Scent','New Flavour',160),
 (7,'Tupperware','New Larger Sized Bottle',230)
 
-select *  from Orders
 
 insert into Orders(order_id,customer_id,order_date,total_amount)
 values
+(1,4,'2023-04-12',44),
 (2,3,'2023-04-18',24000),
 (3,7,'2023-04-24',160),
 (4,1,'2023-05-11',230),
 (5,5,'2023-05-29',1500000),
 (6,9,'2023-06-13',80)
 
-select *  from OrderDetails
 
 insert into OrderDetails(order_detais_id,order_id,product_id,quantity) 
 values
@@ -47,10 +96,10 @@ values
 (5,5,5,1),
 (6,6,1,1)
 
-select *  from Inventory
 
 insert into Inventory(inventory_id,product_id,quantity,last_stock_update)
 values
+(1,1,10,'2023-03-12'),
 (2,2,7,'2023-03-12'),
 (3,3,40,'2023-03-20'),
 (4,4,3,'2023-04-07'),
@@ -65,10 +114,6 @@ check(price > 0)
 alter table  Products
 add constraint DF_category
 default 1 for category
-
-alter table Products
-add constraint FK_Products_Category
-foreign key(category) references Category(id)
 
 --DML:
 
